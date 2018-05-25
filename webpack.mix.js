@@ -22,19 +22,21 @@ mix.webpackConfig({
         cacheId: 'pwa',
         filename: 'service-worker.js',
         staticFileGlobs: ['public/**/*.{css,eot,svg,ttf,woff,woff2,js,html}'],
-        minify: false,
+        minify: true,
         stripPrefix: 'public/',
         handleFetch: true,
         dynamicUrlToDependencies: { //you should add the path to your blade files here so they can be cached
         							//and have full support for offline first (example below)
             '/test/laravel-pwa/public/': [
-            		'resources/views/welcome.blade.php',
+            		'resources/views/welcome.blade.php'
             	],
             '/test/laravel-pwa/public/login': [
-            		'resources/views/login.blade.php',
+            		'resources/views/auth/login.blade.php',
+            		'resources/views/layouts/app.blade.php'
             	],
-            '/test/laravel-pwa/public/home': [
-            		'resources/views/home.blade.php',
+            '/test/laravel-pwa/public/register': [
+            		'resources/views/auth/register.blade.php',
+            		'resources/views/layouts/app.blade.php'
             	]
             // '/posts': ['resources/views/posts.blade.php']
         },
